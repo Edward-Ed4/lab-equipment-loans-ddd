@@ -3,7 +3,7 @@ from src.domain.errors import InvalidLoanTransition
 
 
 class Loan:
-    """BR2: loan state transitions and activation lifecycle."""
+    """BR2 - identity/state rule"""
 
     def __init__(self, loan_id: str, equipment_id: str, period):
         self.loan_id = loan_id
@@ -17,9 +17,14 @@ class Loan:
         self.status = LoanStatus.ACTIVE
 
     def cancel(self):
+        if self.status == LoanStatus.CANCELLED:
+            raise InvalidLoanTransition("A cancelled loan cannot be cancelled again.")
         if self.status not in (LoanStatus.PENDING, LoanStatus.ACTIVE):
-            raise InvalidLoanTransition("A loan can only be cancelled from PENDING or ACTIVE.")
+            raise InvalidLoanTransition("A loan can be cancelled only from PENDING or ACTIVE.")
         self.status = LoanStatus.CANCELLED
 
     def __eq__(self, other):
         return isinstance(other, Loan) and self.loan_id == other.loan_id
+
+    def __hash__(self):
+        return hash(self.loan_id)

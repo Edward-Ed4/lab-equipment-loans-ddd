@@ -3,7 +3,7 @@ from src.domain.errors import EquipmentUnavailable
 
 
 class Equipment:
-    """BR5: equipment loan state and availability protection."""
+    """BR5 - equipment can be ON_LOAN for only one loan at a time"""
 
     def __init__(self, equipment_id: str, name: str, restricted: bool = False):
         self.equipment_id = equipment_id
@@ -18,3 +18,6 @@ class Equipment:
 
     def __eq__(self, other):
         return isinstance(other, Equipment) and self.equipment_id == other.equipment_id
+
+    def __hash__(self):
+        return hash(self.equipment_id)
