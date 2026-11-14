@@ -19,8 +19,6 @@ class Loan:
     def cancel(self):
         if self.status == LoanStatus.CANCELLED:
             raise InvalidLoanTransition("A cancelled loan cannot be cancelled again.")
-        if self.status not in (LoanStatus.PENDING, LoanStatus.ACTIVE):
-            raise InvalidLoanTransition("A loan can be cancelled only from PENDING or ACTIVE.")
         self.status = LoanStatus.CANCELLED
 
     def __eq__(self, other):
@@ -28,3 +26,4 @@ class Loan:
 
     def __hash__(self):
         return hash(self.loan_id)
+

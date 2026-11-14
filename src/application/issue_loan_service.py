@@ -36,7 +36,7 @@ class IssueLoanService:
 
         loan_id = str(uuid4())
         try:
-            loan = borrower.issue_loan(loan_id, equipment.equipment_id, period)
+            borrower.issue_loan(loan_id, equipment.equipment_id, period)
         except LoanLimitExceeded:
             return IssueLoanResult("LIMIT_EXCEEDED", None, "Borrower has reached the loan limit.")
 

@@ -42,3 +42,9 @@ class Borrower:
 
     def active_loan_count(self) -> int:
         return sum(1 for loan in self._loans if loan.status in (LoanStatus.PENDING, LoanStatus.ACTIVE))
+
+    def __eq__(self, other):
+        return isinstance(other, Borrower) and self.borrower_id == other.borrower_id
+
+    def __hash__(self):
+        return hash(self.borrower_id)
