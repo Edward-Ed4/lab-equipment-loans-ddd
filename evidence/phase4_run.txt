@@ -1,0 +1,17 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\Edward\AppData\Local\Python\pythoncore-3.14-64\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Edward\Desktop\University Equipmennt borrowing
+configfile: pytest.ini
+collecting ... collected 8 items
+
+tests/test_br_rules.py::test_T1_BR1_loan_period PASSED                   [ 12%]
+tests/test_br_rules.py::test_T2_BR2_loan_state PASSED                    [ 25%]
+tests/test_br_rules.py::test_T3_BR3_loan_limit PASSED                    [ 37%]
+tests/test_br_rules.py::test_T4_BR4_eligibility PASSED                   [ 50%]
+tests/test_br_rules.py::test_T5_BR5_equipment_follow_up PASSED           [ 62%]
+tests/test_issue_loan_flow.py::test_T6_BR6_lookup PASSED                 [ 75%]
+tests/test_issue_loan_flow.py::test_T7_main_use_case_success PASSED      [ 87%]
+tests/test_issue_loan_flow.py::test_T8_equipment_rejects_follow_up PASSED [100%]
+
+============================== 8 passed in 0.15s ==============================
